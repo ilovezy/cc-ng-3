@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccTodo">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container" ng-controller="todoController">
+        <h2 class="text-center" ng-class="'text-danger'">ccTodo</h2>
+
+        <form name="ccTodo">
+            <input type="text" class="form-control" style="display: inline-block; max-width: 200px;" name="newtodo" ng-model="newTodo" required>
+            <button class="btn btn-success" ng-disabled="ccTodo.$invalid" ng-click="addTodo()">add todo</button>
+            <button class="btn orange" ng-click="clearCompleted()">clearCompleted</button>
+        </form>
+
+
+        <br>
+        <br>
+        <div class="list-group">
+            <label class="list-group-item" ng-class="{'active': todo.done}" ng-repeat="todo in todos track by $index">
+                <input type="checkbox" ng-model="todo.done">
+                <span ng-class="{'done': todo.done}">{{ todo.title }}</span>
+            </label>
+        </div>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript">
+    angular.module('ccTodo', [])
+        .controller('todoController', ['$scope', function($scope) {
+            $scope.todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+            $scope.addTodo = function() {
+                $scope.todos.push({
+                    'title': $scope.newTodo,
+                    'done': false
+                })
+                $scope.newTodo = ''
+            }
+
+            $scope.clearCompleted = function() {
+                $scope.todos = $scope.todos.filter(function(item) {
+                    return !item.done
+                });
+            }
+
+            $scope.$watch('todos', function(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    localStorage.setItem('todos', JSON.stringify(newValue))
+                }
+            }, true);
+
+        }])
+    </script>
+</body>
+
+</html>

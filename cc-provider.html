@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+
+    <div class="container" ng-controller="providerController">
+        <h2>{{ providerVal }}</h2>
+        <h2>{{ FactoryVal }}</h2>
+        <h2>{{ ServiceVal }}</h2>
+        <h2>{{ ValueVal }}</h2>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript">
+    function Service() {}
+
+    Service.prototype.log = function() {
+        return 'this is a service'
+    }
+
+    var s = new Service
+
+    console.log(s.log());
+
+    angular.module('ccApp', ['ngRoute'])
+        .provider('theProvider', {
+            $get: function() {
+                return 'this is cc ProviderVal'
+            }
+        })
+
+    .factory('theFactory', function() {
+        return 'this is Factory'
+    })
+
+    .service('theService', Service)
+
+    .value('theVal', 'theVal')
+
+    .controller('providerController', ['$scope', 'theProvider', 'theFactory', 'theService', 'theVal',
+        function($scope, theProvider, theFactory, theService, theVal) {
+            $scope.providerVal = theProvider
+            $scope.FactoryVal = theFactory
+            $scope.ServiceVal = theService.log()
+            $scope.ValueVal = theVal
+        }
+    ])
+    </script>
+</body>
+
+</html>

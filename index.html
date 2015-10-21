@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+    <style type="text/css">
+    a.ng-enter {
+        transition: 1s ease-in-out all;
+        opacity: 0;
+        /*transform: translateX(-100%);*/
+        transform: translateY(30px);
+    }
+    
+    a.ng-enter-stagger {
+        transition-delay: 2s;
+    }
+    
+    a.ng-enter.ng-enter-active {
+        opacity: 1;
+        /*transform: translateX(0);*/
+        transform: translateY(0);
+    }
+    
+    a.ng-leave {
+        transition: 1s ease-in-out all;
+        opacity: 1;
+        /*transform: translateX(0);*/
+        transform: translateY(0);
+    }
+    
+    a.ng-leave.ng-leave-active {
+        opacity: 0;
+        /*transform: translateX(100%);*/
+        transform: translateY(30px);
+    }
+    </style>
+</head>
+
+<body ng-app="ccApp">
+    <div class="container ">
+
+        <main ui-view></main>
+
+        <div>
+            delete Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ratione consequuntur animi minima placeat, velit tempora sit eveniet accusantium magnam corporis ab, amet! Quam, sint, sit. Vitae autem, consequatur, dolore repellat voluptates aliquid nam iure eum omnis! Vero quaerat minus vitae, qui debitis architecto fugit ipsa quisquam dignissimos delectus quasi nesciunt, modi quae quibusdam dolor perferendis sint, soluta iusto tempora doloribus incidunt voluptatum eos! Ea distinctio modi nihil quos, excepturi labore sint sapiente. Debitis nemo autem odit ut, maiores culpa quisquam consequuntur, vero. Quam minus sapiente nesciunt autem rem, nobis deserunt necessitatibus architecto suscipit debitis numquam eligendi laboriosam laborum, temporibus.
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="cc-js/ccApp.js"></script>
+
+</body>
+
+</html>

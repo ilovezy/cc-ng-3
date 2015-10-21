@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+
+    <div class="container" ng-controller="theController">
+        {{myVal}}
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+    angular.module('ccApp', [])
+        .controller('theController', ['$scope', '$q', function($scope, $q) {
+            $scope.addOne = function(num) {
+                var q = $q.defer();
+
+                if (angular.isNumber(num)) {
+                    q.resolve(num + 1)
+                } else {
+                    q.reject('NaN')
+                }
+
+                return q.promise
+            }
+
+            $scope.myVal = 0;
+
+            $scope.promise = $scope.addOne($scope.myVal)
+            $scope.promise.then(
+                function(v) {
+                    return v
+                },
+                function(err) {
+                    return err
+                }
+            ).then(
+                function(v) {
+                    $scope.myVal = v
+                },
+                function(err) {
+                    $scope.myVal = err
+                }
+            )
+        }])
+    </script>
+</body>
+
+</html>

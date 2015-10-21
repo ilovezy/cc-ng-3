@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+
+    <style type="text/css">
+    input.ng-invalid {
+        border: 1px solid red;
+    }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container" ng-controller="theController">
+        <form name="ccForm">
+            <input type="email" name="email" required ng-model="user.email">
+            <span ng-show="ccForm.email.$dirty && ccForm.email.$error.required">Required!</span>
+            <span ng-show="ccForm.email.$dirty && ccForm.email.$error.email">not an Email!</span>
+        </form>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript">
+    angular.module('ccApp', [])
+        .controller('theController', ['$scope', function($scope) {
+            // body...
+
+        }])
+    </script>
+</body>
+
+</html>

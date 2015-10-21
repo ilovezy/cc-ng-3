@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <input type="text" ng-model="color">
+    <div ng-switch on="color">
+        <div ng-switch-when="red" style="color: {{color}}">red</div>
+        <div ng-switch-when="blue" style="color: {{color}}">blue</div>
+        <div ng-switch-when="green" style="color: {{color}}">green</div>
+        <div ng-switch-default style="color: {{color}}">color</div>
+
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+</body>
+
+</html>

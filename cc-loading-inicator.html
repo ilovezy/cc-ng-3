@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body ng-controller="appController">
+
+    <div class="container" ng-controller="theController">
+        <h3 class="center-align">show random users</h3>
+
+        <div class="progress" ng-show="loading">
+            <div class="indeterminate"></div>
+        </div>
+
+
+        <div class="collection" ng-hide="loading">
+            <a ng-repeat="user in users" class="collection-item">
+                {{user.firstName}}
+            </a>
+        </div>
+
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript">
+    angular.module('ccApp', [])
+        .controller('theController', ['$scope', '$http', function($scope, $http) {
+            $scope.$emit('LOAD')
+
+            $http.jsonp('http://filltext.com/?rows=10&delay=5&firstName={firstName}&callback=JSON_CALLBACK')
+                .success(function(data) {
+                    $scope.users = data;
+                    $scope.$emit('UNLOAD')
+                })
+        }])
+        .controller('appController', ['$scope', function($scope) {
+            $scope.$on('LOAD', function() {
+                $scope.loading = true
+            })
+            $scope.$on('UNLOAD', function() {
+                $scope.loading = false
+            })
+        }])
+    </script>
+</body>
+
+</html>

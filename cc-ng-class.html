@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+
+</head>
+
+<body>
+
+    <div class="container" ng-controller="theController">
+        <p ng-class="[red, cardPanel]" ng-repeat="item in items">
+            {{item.title}}
+        </p>
+
+        <hr>
+
+        <p ng-class="{'red': item.type===1, 'grey': item.type===3}" class="card-panel" ng-repeat="item in items">
+            {{item.title}}
+        </p>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript">
+    angular.module('ccApp', [])
+        .controller('theController', ['$scope', function($scope) {
+            $scope.items = [{
+                'title': 'a',
+                'type': 1
+            }, {
+                'title': 'b',
+                'type': 2
+            }, {
+                'title': 'c',
+                'type': 3
+            }, {
+                'title': 'd',
+                'type': 4
+            }, ]
+
+            $scope.red = 'red'
+            $scope.grey = 'grey'
+            $scope.cardPanel = 'card-panel'
+        }])
+    </script>
+</body>
+
+</html>

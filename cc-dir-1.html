@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- <name data-first="cc" data-last="zy"></name> -->
+        <!-- <h1 namer="" data-first="Joe" data-last="Moddalone"></h1> -->
+        <h1 class="namer" data-first="Joe" data-last="Moddalone"></h1>
+        <h1 class="namer" data-first="Mary" data-last="Jane"></h1>
+        <h1 class="namer" data-first="Darr" data-last="KK"></h1>
+        <h1 class="namer" data-first="Jim" data-last="Gell"></h1>
+    </div>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script src="cc-js/namer.js"></script>
+    <script>
+    var ccApp = angular.module('ccApp', ['namer'])
+    </script>
+</body>
+
+</html>

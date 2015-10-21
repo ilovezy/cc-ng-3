@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <panel>
+            <panel-title title="Hello cc">what are you talking about???</panel-title>
+            <panel-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, deserunt sapiente eum accusamus quod, officiis aperiam maiores assumenda, perspiciatis eius ab et quisquam facere dolorem repellendus totam numquam consectetur. Culpa nobis libero, nulla ex ipsam provident, hic saepe labore molestias voluptate dignissimos harum quae eaque, error maxime modi aliquid temporibus eligendi inventore earum accusantium corporis sint. Consequuntur quisquam, dicta quibusdam doloribus magni eum impedit, quaerat. Quod asperiores ad est porro optio quisquam minima quaerat animi dignissimos, earum beatae ipsa consectetur qui nesciunt vel, accusantium necessitatibus quidem illo maxime nemo eaque minus cupiditate! Earum explicabo deserunt totam ipsam. Vitae, voluptatibus, cumque.</panel-content>
+        </panel>
+        <panel>
+            <panel-title title="Hello cc">what are you talking about???</panel-title>
+            <panel-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, deserunt sapiente eum accusamus quod, officiis aperiam maiores assumenda, perspiciatis eius ab et quisquam facere dolorem repellendus totam numquam consectetur. Culpa nobis libero, nulla ex ipsam provident, hic saepe labore molestias voluptate dignissimos harum quae eaque, error maxime modi aliquid temporibus eligendi inventore earum accusantium corporis sint. Consequuntur quisquam, dicta quibusdam doloribus magni eum impedit, quaerat. Quod asperiores ad est porro optio quisquam minima quaerat animi dignissimos, earum beatae ipsa consectetur qui nesciunt vel, accusantium necessitatibus quidem illo maxime nemo eaque minus cupiditate! Earum explicabo deserunt totam ipsam. Vitae, voluptatibus, cumque.</panel-content>
+        </panel>
+        <panel>
+            <panel-title title="Hello cc">what are you talking about???</panel-title>
+            <panel-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, deserunt sapiente eum accusamus quod, officiis aperiam maiores assumenda, perspiciatis eius ab et quisquam facere dolorem repellendus totam numquam consectetur. Culpa nobis libero, nulla ex ipsam provident, hic saepe labore molestias voluptate dignissimos harum quae eaque, error maxime modi aliquid temporibus eligendi inventore earum accusantium corporis sint. Consequuntur quisquam, dicta quibusdam doloribus magni eum impedit, quaerat. Quod asperiores ad est porro optio quisquam minima quaerat animi dignissimos, earum beatae ipsa consectetur qui nesciunt vel, accusantium necessitatibus quidem illo maxime nemo eaque minus cupiditate! Earum explicabo deserunt totam ipsam. Vitae, voluptatibus, cumque.</panel-content>
+        </panel>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript">
+    angular.module('ccApp', [])
+        .directive('panelTitle', function() {
+            return {
+                restrict: 'E',
+                template: '<h3 ng-transclude></h3>',
+                transclude: true
+            }
+        })
+        .directive('panel', function() {
+            return {
+                restrict: 'E',
+                template: '<div class="card-panel" ng-transclude></div>',
+                transclude: true
+            }
+        })
+        .directive('panelContent', function() {
+            return {
+                restrict: 'E',
+                template: '<p class="orange-text flow-text" ng-transclude></p>',
+                transclude: true
+            }
+        })
+    </script>
+</body>
+
+</html>

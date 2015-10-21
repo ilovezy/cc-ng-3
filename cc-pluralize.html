@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" ng-model="playerCount">
+        <h3>
+            <ng-pluralize count="playerCount" when="{
+                '0': 'Nobody is playing',
+                '1': '...... one person',
+                '12': 'A dozen people are playing',
+                'one': 'One person is play',
+                'other': '{} people are playing'
+
+            }" offset="1"></ng-pluralize>
+
+        </h3>
+
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+    var a = ajax
+
+    var a = <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    var ja = angular.module('remove', console.log('hello'))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container" ng-controller="theController">
+        <input type="text" ng-model="search.fname">
+        <table class="bordered centered striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>first</th>
+                    <th>last</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users | filter: search.fname">
+                    <td>{{ user.id | currency }}</td>
+                    <td>{{ user.fname | uppercase }}</td>
+                    <td>{{ user.lname | lowercase }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <script>
+    angular.module('ccApp', [])
+        .controller('theController', ['$scope', '$http', function($scope, $http) {
+            $http.jsonp('http://www.filltext.com/?rows=30&id={index}&fname={firstName}&lname={lastName}&callback=JSON_CALLBACK')
+                .success(function(data) {
+                    // console.log(data);
+                    $scope.users = data
+                })
+        }])
+    </script>
+</body>
+
+</html>

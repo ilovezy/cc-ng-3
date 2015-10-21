@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+
+    <div class="container" ng-controller="theController">
+        <table class="centered striped">
+            <thead>
+                <tr>
+                    <th>header</th>
+                    <th>header</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="person in people">
+                    <td>{{person.firstName}}</td>
+                    <td>{{person.lastName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/ngFilltext/ng-filltext.js"></script>
+    <script type="text/javascript">
+    angular.module('ccApp', ['ng-filltext'])
+        .controller('theController', ['$scope', 'filltext', function($scope, filltext) {
+            var request = {
+                'rows': 10,
+                'firstName': '{firstName}',
+                'lastName': '{lastName}'
+            }
+            filltext.create(request, function(data, status) {
+                $scope.people = data
+            })
+
+        }])
+    </script>
+</body>
+
+</html>

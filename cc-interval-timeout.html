@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccTodo">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container" ng-controller="todoController">
+        <b ng-repeat="item in items">{{item}}</b>
+        <hr>
+        <input type="text" name="" value="" ng-model="something">
+        <button class="btn btn-default" ng-click="stop()">stop</button>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript">
+
+
+
+    angular.module('ccTodo', [])
+        .controller('todoController', ['$scope', '$interval', function($scope, $interval) {
+            $scope.items = [];
+            var i = 0;
+            var promise = $interval(function() {
+                $scope.items.push(i++)
+            }, 500)
+
+            $scope.stop = function() {
+                $interval.cancel(promise)
+            }
+        }])
+    </script>
+</body>
+
+</html>

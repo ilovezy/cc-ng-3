@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" ng-focus="state='Focus!'" ng-blur="state='Blur!!'">
+        <h3>
+            {{state}}
+        </h3>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+</body>
+
+</html>
